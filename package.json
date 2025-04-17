@@ -7,7 +7,7 @@
   },
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "build": "webpack --mode production",
+    "build": "node node_modules/webpack/bin/webpack.js --mode production",
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "fix": "npx eslint --fix \"src/**/*.{ts,tsx}\"",
     "clean": "node -e \"require('fs').rmSync('./dist', { recursive: true, force: true }); require('fs').rmSync('./node_modules/.cache', { recursive: true, force: true });\" && npm run build"
