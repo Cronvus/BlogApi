@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "esnext"],
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "typeRoots": ["./node_modules/@types", "./types"],
+    "baseUrl": ".",
+    "allowJs": true,
+    "paths": {
+      "@types": ["src/types/"],
+      "@utils": ["src/utils/"],
+      "@services": ["src/services/"],
+      "@assets/*": ["src/assets/*"],
+      "@components": ["src/components/index"],
+      "@constants": ["src/constants/index"],
+      "@pages": ["src/pages/index"],
+      "@styles": ["src/styles/index"],
+      "@views": ["src/views/index"],
+      "@context": ["src/context/index"],
+      "@hooks": ["src/hooks/index"],
+      "@config": ["src/config/index"],
+      "@tests": ["src/tests/index"],
+      "@middleware": ["src/middleware/index"],
+      "@store": ["src/store/index"],
+    }
+  },
+  "include": ["src/**/*", "type.d.ts"],
+  "exclude": ["node_modules"]
+}
