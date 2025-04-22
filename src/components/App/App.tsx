@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { ArticleList } from '../../pages/ArticleList'
 import { SignIn } from '../../pages/SignIn'
@@ -10,8 +10,19 @@ import { Layout } from '../Layout'
 import { SingleArticle } from '../../pages/SingleArticle'
 import { EditArticle } from '../../pages/EditArticle'
 import RequireAuth from '../hooks/RequireAuth'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../store/store'
+import { setUserFromLocalStorage } from '../../store/user'
 
 const App = () => {
+  const dispatch = useDispatch<AppDispatch>()
+
+  useEffect(() => {
+    const user = localStorage.getItem('user')
+    if (user) {
+      dispatch(setUserFromLocalStorage(JSON.parse(user)))
+    }
+  }, [dispatch])
 
   return (
     <Routes>
