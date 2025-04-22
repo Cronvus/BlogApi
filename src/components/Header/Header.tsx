@@ -21,6 +21,16 @@ const Header = () => {
     dispatch(logOut())
     navigate(fromPage, { replace: true })
   }
+  const handelNavigateSignIn = () => {
+    navigate('/sign-in', { replace: true })
+  }
+
+  const handelNavigateSignUp = () => {
+    navigate('/sign-up', { replace: true })
+  }
+  const handelNewArticle = () => {
+    navigate('/new-article', { replace: true })
+  }
 
   return (
     <AppBar position="fixed" color="inherit" sx={{ boxShadow: 'unset' }}>
@@ -32,24 +42,26 @@ const Header = () => {
         </Link>
         {!auth && (
           <>
-            <Link to="/sign-in" style={{ textDecoration: 'none' }} state={{ from: location }}>
-              <Button sx={{ textTransform: 'none', color: 'black' }}>Sign In</Button>
-            </Link>
+            
+            <Button sx={{ textTransform: 'none', color: 'black' }} onClick={handelNavigateSignIn}>
+              Sign In
+            </Button>
+            
 
-            <Link to="/sign-up" style={{ textDecoration: 'none' }}>
-              <Button color="success" variant="outlined" sx={{ textTransform: 'none' }}>
+            
+            <Button color="success" variant="outlined" sx={{ textTransform: 'none' }} onClick={handelNavigateSignUp}>
                                 Sign Up
-              </Button>
-            </Link>
+            </Button>
+            
           </>
         )}
         {auth && (
           <>
-            <Link style={{ textDecoration: 'none' }} to="/new-article">
-              <Button color="success" variant="outlined" sx={{ textTransform: 'none' }}>
+            
+            <Button color="success" variant="outlined" sx={{ textTransform: 'none' }} onClick={handelNavigateSignUp}>
                                 Create article
-              </Button>
-            </Link>
+            </Button>
+           
             <Link to="/profile" style={{ textDecoration: 'none' }}>
               <Typography variant="h6" color="black">
                 {userName}

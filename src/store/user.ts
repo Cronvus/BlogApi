@@ -137,6 +137,13 @@ const user = createSlice({
     resetUserError(state) {
       state.errorUserServer = null
     },
+    setUserFromLocalStorage(state, action) {
+      const { username, email, bio, image } = action.payload
+      state.username = username
+      state.email = email
+      state.bio = bio
+      state.image = image
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -205,6 +212,6 @@ const user = createSlice({
   },
 })
 
-export const { logOut, setUserIsNotEdit, resetUserError } = user.actions
+export const { logOut, setUserIsNotEdit, resetUserError, setUserFromLocalStorage } = user.actions
 
 export default user.reducer

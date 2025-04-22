@@ -48,20 +48,27 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = (props) => {
     navigate('/articles', { replace: true })
   }
 
+  const handleArticleOpenClick = () => {
+    navigate(`/articles/${article.slug}`, { replace: true })
+  }
+  const openEditArticle = () => {
+    navigate(`/articles/${article.slug}/edit`, { replace: true })
+  }
+
   return (
     <>
       <Grid container sx={{ p: 2 }}>
         <Grid size ={{ xs: 9 }} component='div'>
           <Grid container direction="row" justifyContent="flex-start" alignItems="center" sx={{ mb: 1, gap: 1 }}>
             {!singlePage && (
-              <Link to={`${article.slug}`} style={{ textDecoration: 'none' }}>
-                <Typography variant="h5" color="#1890FF">
+              <Link to={`/articles/${article.slug}`} style={{ textDecoration: 'none' }}>
+                <Typography variant="h5" color="#1890FF" onClick={handleArticleOpenClick}>
                   {article.title}
                 </Typography>
               </Link>
             )}
             {singlePage && (
-              <Typography variant="h5" color="#1890FF">
+              <Typography variant="h5" color="#1890FF" onClick={handleArticleOpenClick}>
                 {article.title}
               </Typography>
             )}
@@ -99,11 +106,11 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = (props) => {
               <Button color="error" variant="outlined" sx={{ textTransform: 'none', mr: 3 }} onClick={openModal}>
                     Delete
               </Button>
-              <Link to={`/articles/${article.slug}/edit`} style={{ textDecoration: 'none' }}>
-                <Button color="success" variant="outlined" sx={{ textTransform: 'none' }} >
+              
+              <Button color="success" variant="outlined" sx={{ textTransform: 'none' }} onClick={openEditArticle}>
                       Edit
-                </Button>
-              </Link>
+              </Button>
+              
             </Box>
           )}
         </Grid>

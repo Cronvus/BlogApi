@@ -24,7 +24,8 @@ const SingleArticle = () => {
     }
   }, [dispatch, slug])
 
-  const goBack = () => navigate(-1)
+
+  const goBack = () => navigate('/articles', { replace: true })
 
   const article = useSelector((state: RootState) => state.articles.singleArticle)
 
