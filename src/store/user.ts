@@ -143,6 +143,8 @@ const user = createSlice({
       state.email = email
       state.bio = bio
       state.image = image
+      state.userIsEdit = true
+      state.userRequestStatus = 'fulfilled'
     },
   },
   extraReducers: (builder) => {
