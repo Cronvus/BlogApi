@@ -130,6 +130,7 @@ const user = createSlice({
       state.bio = ''
       state.image = ''
       state.userRequestStatus = null
+      localStorage.removeItem('user')
     },
     setUserIsNotEdit(state) {
       state.userIsEdit = false
