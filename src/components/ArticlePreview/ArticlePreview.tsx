@@ -62,13 +62,24 @@ const ArticlePreview: React.FC<ArticlePreviewProps> = (props) => {
           <Grid container direction="row" justifyContent="flex-start" alignItems="center" sx={{ mb: 1, gap: 1 }}>
             {!singlePage && (
               <Link to={`/articles/${article.slug}`} style={{ textDecoration: 'none' }}>
-                <Typography variant="h5" color="#1890FF" onClick={handleArticleOpenClick}>
+                <Typography variant="h5" color="#1890FF" sx={{
+                  cursor: 'pointer', 
+                  '&:hover': {
+                    color: 'primary.main', 
+                  },
+                }} 
+                onClick={handleArticleOpenClick}>
                   {article.title}
                 </Typography>
               </Link>
             )}
             {singlePage && (
-              <Typography variant="h5" color="#1890FF" onClick={handleArticleOpenClick}>
+              <Typography variant="h5" color="#1890FF" sx={{
+                cursor: 'pointer',
+                '&:hover': {
+                  color: 'primary.main',
+                },
+              }} onClick={handleArticleOpenClick}>
                 {article.title}
               </Typography>
             )}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { ArticleList } from '../../pages/ArticleList'
 import { SignIn } from '../../pages/SignIn'
@@ -12,17 +12,18 @@ import { EditArticle } from '../../pages/EditArticle'
 import RequireAuth from '../hooks/RequireAuth'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../store/store'
-import { setUserFromLocalStorage } from '../../store/user'
+import { fetchLoginUser } from '../../store/user'
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>()
+  const user = localStorage.getItem('user')
 
-  useEffect(() => {
-    const user = localStorage.getItem('user')
-    if (user) {
-      dispatch(setUserFromLocalStorage(JSON.parse(user)))
+  if (user) {
+    const userData = JSON.parse(user)
+    if (userData) {
+      dispatch(fetchLoginUser({ email: userData.email, password: userData.password }))
     }
-  }, [dispatch])
+  }
 
   return (
     <Routes>

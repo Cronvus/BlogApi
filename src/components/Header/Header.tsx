@@ -58,7 +58,7 @@ const Header = () => {
         {auth && (
           <>
             
-            <Button color="success" variant="outlined" sx={{ textTransform: 'none' }} onClick={handelNavigateSignUp}>
+            <Button color="success" variant="outlined" sx={{ textTransform: 'none' }} onClick={handelNewArticle}>
                                 Create article
             </Button>
            

@@ -26,11 +26,7 @@ const SignIn = () => {
 
   const handleFormSubmit = (data: SignInFormData) => {
     dispatch(fetchLoginUser({ email: data.email, password: data.password }))
-      .then((response) => {
-        if (response.meta.requestStatus === 'fulfilled') {
-          localStorage.setItem('user', JSON.stringify(response.payload))
-        }
-      })
+
   }
   return (
     <>

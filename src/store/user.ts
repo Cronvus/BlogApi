@@ -21,7 +21,7 @@ export const fetchLoginUser = createAsyncThunk(
         },
       )
       .then((res) => {
-        console.log(res.data)
+        localStorage.setItem('user', JSON.stringify({ email, password }))
         return res.data
       })
       .catch((err) => {
@@ -52,7 +52,6 @@ export const fetchCreateUser = createAsyncThunk(
         },
       )
       .then((res) => {
-        console.log(res.data)
         return res.data
       })
       .catch((err) => {
@@ -138,15 +137,6 @@ const user = createSlice({
     resetUserError(state) {
       state.errorUserServer = null
     },
-    setUserFromLocalStorage(state, action) {
-      const { username, email, bio, image } = action.payload
-      state.username = username
-      state.email = email
-      state.bio = bio
-      state.image = image
-      state.userIsEdit = true
-      state.userRequestStatus = 'fulfilled'
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -215,6 +205,6 @@ const user = createSlice({
   },
 })
 
-export const { logOut, setUserIsNotEdit, resetUserError, setUserFromLocalStorage } = user.actions
+export const { logOut, setUserIsNotEdit, resetUserError } = user.actions
 
 export default user.reducer
